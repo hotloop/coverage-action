@@ -6,7 +6,7 @@ This action publishes coverage information to HotLoop analytics
 
 ### `report-path`
 
-**Required** The path to the coverage report fle
+**Required** The path to the coverage report fle. This path supports glob patterns
 
 ### `token`
 
@@ -14,7 +14,9 @@ This action publishes coverage information to HotLoop analytics
 
 ## Example usage
 
-uses: hotloop/coverage-action@master
+```
+uses: hotloop/coverage-action@main
 with:
   report-path: .nyc_report/lcov.info
   token: your-hotloop-token
+```

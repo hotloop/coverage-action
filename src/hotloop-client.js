@@ -1,6 +1,6 @@
 const Axios = require('axios')
 
-class HotloopClient {
+class HotLoopClient {
   constructor (token) {
     const config = {
       baseURL: 'https://europe-west3-hotloop-289416.cloudfunctions.net/',
@@ -21,5 +21,5 @@ class HotloopClient {
 }
 
 module.exports = {
-  HotloopClient
+  HotLoopClient
 }
