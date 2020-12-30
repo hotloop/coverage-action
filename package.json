@@ -1,0 +1,29 @@
+{
+  "name": "coverage-action",
+  "version": "1.0.0",
+  "description": "An action for publishing coverage to HotLoop",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotloop/coverage-action.git"
+  },
+  "keywords": [
+    "HotLoop",
+    "coverage",
+    "github",
+    "action"
+  ],
+  "author": "hotloop.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hotloop/coverage-action/issues"
+  },
+  "homepage": "https://github.com/hotloop/coverage-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
+}

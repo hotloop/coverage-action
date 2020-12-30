@@ -1,0 +1,12 @@
+name: HotLoop Coverage
+description: Report coverage to HotLoop
+inputs:
+  report-path:
+    description: The path to the report file
+    required: true
+  token:
+    description: Your HotLoop API token
+    required: true
+runs:
+  using: node12
+  main: src/index.js  
