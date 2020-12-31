@@ -2,7 +2,7 @@ const { promises: fs } = require('fs')
 const core = require('@actions/core')
 const github = require('@actions/github')
 const glob = require('@actions/glob')
-const { HotLoopClient } = require('./hotloop-client')
+const { HotLoopSdkFactory } = require('@hotloop/hotloop-sdk')
 
 const getConfig = () => {
   const token = core.getInput('token')
@@ -25,8 +25,9 @@ const getConfig = () => {
 }
 
 const publishCoverage = config => {
-  const client = new HotLoopClient(config.token)
-  return client.reportCoverage(config.options)
+  const opts = { userAgent: 'coverage-action', timeout: 5000, retries: 3, retryDelay: 1000 }
+  const client = HotLoopSdkFactory.getInstance(config.token, opts)
+  return client.syncCoverage(config.options)
 }
 
 const setFailure = error => core.setFailed(error.message)
