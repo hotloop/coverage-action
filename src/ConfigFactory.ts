@@ -1,9 +1,9 @@
-import { SyncCoverageOptions } from '@hotloop/hotloop-sdk/dist/Options'
 import { InputOptions } from '@actions/core'
 import { Context } from '@actions/github/lib/context'
 import { create, Globber } from '@actions/glob'
 import { WebhookPayload } from '@actions/github/lib/interfaces'
 import { promises as fs } from 'fs'
+import { SyncCoverageOptions } from '@hotloop/hotloop-sdk'
 
 interface Config {
   token: string
@@ -21,6 +21,7 @@ class ConfigFactory {
 
     if (token === '') return Promise.reject(new Error('invalid hotloop token'))
     if (reportPath === '') return Promise.reject(new Error('invalid report path'))
+    if (!context.repository || !context.repository.html_url) return Promise.reject(new Error('invalid github context'))
 
     return create(reportPath)
       .then((globber: Globber) => globber.glob())
