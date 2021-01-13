@@ -108,17 +108,6 @@ describe('ConfigFactory', () => {
       .then((config: Config) => config.token.should.deep.equal(token))
   })
 
-  it('sets the token correctly', () => {
-    inputFn
-      .withArgs('token')
-      .returns(token)
-      .withArgs('report-path')
-      .returns(reportPath)
-
-    return ConfigFactory.get(inputFn, mergeGithubContext)
-      .then((config: Config) => config.token.should.deep.equal(token))
-  })
-
   it('reads the report file', () => {
     inputFn
       .withArgs('token')
