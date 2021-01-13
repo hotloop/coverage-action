@@ -15,6 +15,8 @@ var ConfigFactory = /** @class */ (function () {
             return Promise.reject(new Error('invalid hotloop token'));
         if (reportPath === '')
             return Promise.reject(new Error('invalid report path'));
+        if (!context.repository || !context.repository.html_url)
+            return Promise.reject(new Error('invalid github context'));
         return glob_1.create(reportPath)
             .then(function (globber) { return globber.glob(); })
             .then(function (files) { return fs_1.promises.readFile(files[0]); })

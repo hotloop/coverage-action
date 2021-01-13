@@ -1,6 +1,6 @@
-import { SyncCoverageOptions } from '@hotloop/hotloop-sdk/dist/Options';
 import { InputOptions } from '@actions/core';
 import { Context } from '@actions/github/lib/context';
+import { SyncCoverageOptions } from '@hotloop/hotloop-sdk';
 interface Config {
     token: string;
     options: SyncCoverageOptions;
