@@ -8,11 +8,11 @@ var ConfigFactory = /** @class */ (function () {
     }
     ConfigFactory.get = function (inputFn, githubContext) {
         var options = { required: true };
-        var token = inputFn('token', options);
+        var key = inputFn('hotloop-key', options);
         var reportPath = inputFn('report-path', options);
         var context = githubContext.payload;
-        if (token === '')
-            return Promise.reject(new Error('invalid hotloop token'));
+        if (key === '')
+            return Promise.reject(new Error('invalid hotloop key'));
         if (reportPath === '')
             return Promise.reject(new Error('invalid report path'));
         if (!context.repository || !context.repository.html_url)
@@ -21,7 +21,7 @@ var ConfigFactory = /** @class */ (function () {
             .then(function (globber) { return globber.glob(); })
             .then(function (files) { return fs_1.promises.readFile(files[0]); })
             .then(function (report) { return ({
-            token: token,
+            key: key,
             options: {
                 lcov: report.toString(),
                 repository: context.repository ? context.repository.html_url : null,
