@@ -5,7 +5,7 @@ inputs:
     description: The path to the report file
     required: true
   hotloop-key:
-    description: Your HotLoop API token
+    description: Your HotLoop API key
     required: true
 runs:
   using: node12
