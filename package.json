@@ -47,8 +47,7 @@
     "@actions/core": "1.2.6",
     "@actions/github": "4.0.0",
     "@actions/glob": "0.1.1",
-    "@hotloop/hotloop-sdk": "1.0.5",
-    "axios": "0.21.1",
-    "google-auth-library": "^6.1.4"
+    "@hotloop/hotloop-sdk": "2.0.0",
+    "axios": "0.21.1"
   }
 }

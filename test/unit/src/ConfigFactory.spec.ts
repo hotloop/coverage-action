@@ -57,7 +57,7 @@ describe('ConfigFactory', () => {
     const message = 'token not supplied'
 
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .throws(new Error(message))
 
     const exec = () => ConfigFactory.get(inputFn, mergeGithubContext)
@@ -79,12 +79,12 @@ describe('ConfigFactory', () => {
 
   it('rejects when an empty token is supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns('')
       .withArgs('report-path')
       .returns(reportPath)
 
-    return ConfigFactory.get(inputFn, mergeGithubContext).should.eventually.be.rejectedWith('invalid hotloop token')
+    return ConfigFactory.get(inputFn, mergeGithubContext).should.eventually.be.rejectedWith('invalid hotloop key')
   })
 
   it('rejects when an empty report-path is supplied', () => {
@@ -99,13 +99,13 @@ describe('ConfigFactory', () => {
 
   it('sets the token correctly', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('report-path')
       .returns(reportPath)
 
     return ConfigFactory.get(inputFn, mergeGithubContext)
-      .then((config: Config) => config.token.should.deep.equal(token))
+      .then((config: Config) => config.key.should.deep.equal(token))
   })
 
   it('reads the report file', () => {

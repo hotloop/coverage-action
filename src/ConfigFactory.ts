@@ -6,7 +6,7 @@ import { promises as fs } from 'fs'
 import { SyncCoverageOptions } from '@hotloop/hotloop-sdk'
 
 interface Config {
-  token: string
+  key: string
   options: SyncCoverageOptions
 }
 
@@ -15,11 +15,11 @@ type InputFunction = (name: string, options?: InputOptions) => string
 class ConfigFactory {
   public static get (inputFn: InputFunction, githubContext: Context): Promise<Config> {
     const options = { required: true }
-    const token: string = inputFn('token', options)
+    const key: string = inputFn('hotloop-key', options)
     const reportPath: string = inputFn('report-path', options)
     const context: WebhookPayload = githubContext.payload
 
-    if (token === '') return Promise.reject(new Error('invalid hotloop token'))
+    if (key === '') return Promise.reject(new Error('invalid hotloop key'))
     if (reportPath === '') return Promise.reject(new Error('invalid report path'))
     if (!context.repository || !context.repository.html_url) return Promise.reject(new Error('invalid github context'))
 
@@ -27,7 +27,7 @@ class ConfigFactory {
       .then((globber: Globber) => globber.glob())
       .then((files: string[]) => fs.readFile(files[0]))
       .then((report: Buffer ) => ({
-        token,
+        key,
         options: {
           lcov: report.toString(),
           repository: context.repository ? context.repository.html_url : null,

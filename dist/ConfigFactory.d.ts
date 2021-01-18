@@ -2,7 +2,7 @@ import { InputOptions } from '@actions/core';
 import { Context } from '@actions/github/lib/context';
 import { SyncCoverageOptions } from '@hotloop/hotloop-sdk';
 interface Config {
-    token: string;
+    key: string;
     options: SyncCoverageOptions;
 }
 declare type InputFunction = (name: string, options?: InputOptions) => string;
