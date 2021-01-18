@@ -4,7 +4,7 @@ inputs:
   report-path:
     description: The path to the report file
     required: true
-  token:
+  hotloop-key:
     description: Your HotLoop API token
     required: true
 runs:
