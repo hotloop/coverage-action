@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync deployment with hotloop
+        uses: hotloop/deployment-action@main
+        with:
+          service: coverage-action
+          environment: production
+          hotloop-key: ${{ secrets.HOTLOOP_KEY }}

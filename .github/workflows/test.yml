@@ -16,7 +16,7 @@ jobs:
       - name: Run tests
         run: npm run coverage
 
-      - name: Publish coverage to hotloop
+      - name: Sync coverage with hotloop
         uses: hotloop/coverage-action@main
         with:
           report-path: coverage/lcov.info
