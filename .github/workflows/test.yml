@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Run tests
+        run: npm run coverage
+
+      - name: Publish coverage to hotloop
+        uses: hotloop/coverage-action@main
+        with:
+          report-path: coverage/lcov.info
+          hotloop-key: ${{ secrets.HOTLOOP_KEY }}

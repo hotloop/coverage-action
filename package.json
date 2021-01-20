@@ -25,6 +25,11 @@
     "url": "https://github.com/hotloop/coverage-action/issues"
   },
   "homepage": "https://github.com/hotloop/coverage-action#readme",
+  "nyc": {
+    "reporter": [
+      "lcov"
+    ]
+  },
   "devDependencies": {
     "@types/chai": "4.2.14",
     "@types/chai-as-promised": "7.1.3",
