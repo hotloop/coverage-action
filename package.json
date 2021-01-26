@@ -52,7 +52,7 @@
     "@actions/core": "1.2.6",
     "@actions/github": "4.0.0",
     "@actions/glob": "0.1.1",
-    "@hotloop/hotloop-sdk": "2.0.1",
+    "@hotloop/hotloop-sdk": "2.0.2",
     "axios": "0.21.1"
   }
 }
