@@ -18,5 +18,5 @@ This action publishes coverage information to HotLoop analytics
 uses: hotloop/coverage-action@main
 with:
   report-path: .nyc_report/lcov.info
-  token: your-hotloop-token
+  hotloop-key: your-hotloop-key
 ```
